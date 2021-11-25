@@ -4,7 +4,25 @@
 <body>
 <header th:insert="fragments/fragments :: navbar"></header>
 <main>
-
+    <div class="container my-5">
+        <div class="text-center my-5"><h1 th:text="#{com.blogapp.articles.welcome}"></h1></div>
+        <div class="card mb-3">
+<!--            <img src="images/article1.jpg" class="card-img-top h-500" alt="...">-->
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+        <div class="card">
+<!--            <img src="images/article2.jpg" class="card-img-top h-500" alt="...">-->
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+    </div>
 </main>
 
 <footer th:replace="fragments/fragments :: footer"></footer>

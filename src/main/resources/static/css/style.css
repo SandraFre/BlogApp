@@ -6,3 +6,7 @@ body{
     display: flex;
     flex-direction: column;
 }
+
+.h-500{
+    max-height: 500px;
+}
