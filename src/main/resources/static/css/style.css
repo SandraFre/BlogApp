@@ -7,6 +7,12 @@ body{
     flex-direction: column;
 }
 
-.h-500{
-    max-height: 500px;
+
+.text-ellipsis{
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
 }
