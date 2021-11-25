@@ -11,7 +11,7 @@ import java.util.UUID;
 @Setter
 @Getter
 @Entity
-@Table(name = "Articles")
+@Table(name = "articles")
 public class Article {
     @Id
     @GeneratedValue
@@ -26,5 +26,6 @@ public class Article {
     private String category;
 
     @NotBlank
+    @Column (columnDefinition = "text")
     private String content;
 }

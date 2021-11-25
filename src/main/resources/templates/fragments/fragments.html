@@ -68,6 +68,40 @@
     </ul>
 </li>
 
+<div th:fragment="paginator(pageOfArticles)"
+     class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center"
+                th:with="order=${pageOfArticles.sort.toList().get(0)},
+                    sort=${order.property + ',' + order.direction}">
+                <li class="page-item "
+                    th:classappend="${pageOfArticles.number eq 0 ? 'disabled':''}">
+                    <a class="page-link"
+                       aria-label="Previous"
+                       th:href="@{/blog(page=${pageOfArticles.number} - 1, sort=${sort} + ',ignorecase')}">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item"
+                    th:each="pageNumb: ${#numbers.sequence(0, pageOfArticles.totalPages - 1)}"
+                    th:classappend="${pageNumb eq pageOfArticles.number ? 'active':''}">
+                    <a class="page-link"
+                       th:href="@{/blog(page=${pageNumb}, sort=${sort} + ',ignorecase')}"
+                       th:text="${pageNumb} + 1"></a>
+                </li>
+                <li class="page-item"
+                    th:classappend="${pageOfArticles.number eq pageOfArticles.totalPages -1 ? 'disabled': ''}">
+                    <a class="page-link"
+                       aria-label="Next"
+                       th:href="@{/blog(page=${pageOfArticles.number} + 1, sort=${sort} + ',ignorecase')}">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 
 <footer th:fragment="footer"
         class="footer mt-auto py-3 bg-dark">

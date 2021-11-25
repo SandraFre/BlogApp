@@ -1,6 +1,7 @@
 package com.example.blogapp.controller;
 
 import com.example.blogapp.service.ArticleService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.SortDefault;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.management.monitor.StringMonitor;
 
+@Slf4j
 @Controller
 @RequestMapping("/blog")
 public class ArticleController {
