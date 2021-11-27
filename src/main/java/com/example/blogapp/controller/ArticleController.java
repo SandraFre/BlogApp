@@ -48,15 +48,28 @@ public class ArticleController {
     }
 
     @PostMapping("/public/blog/article/create")
-    public String createArticle(@Valid Article article, BindingResult bindingResult, RedirectAttributes redirectAttributes){
+    public String createArticle(@Valid Article article, BindingResult bindingResult){
         if (bindingResult.hasErrors()){
             log.warn("Cannot create article {}, errors {}", article, bindingResult);
             return "article-form";
         }
         articleService.saveArticle(article);
-        redirectAttributes.addFlashAttribute("success", "com.blogapp.article.created.successfully");
 
         return "redirect:/public/blog"        ;
     }
+
+    @GetMapping("/public/blog/article/update")
+        public String loadUpdateForm(@RequestParam UUID id, Model model) {
+            model.addAttribute("article", articleService.getArticle(id));
+        return "article-form";
+    }
+
+    @PostMapping("/public/blog/article/update")
+        public String updateArticle(Article article){
+            articleService.saveArticle(article);
+
+            return "redirect:/public/blog";
+    }
+
 
 }
