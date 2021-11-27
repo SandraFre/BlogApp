@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/fragments :: head(#{com.blogapp.article.title})"></head>
+
+<body>
+<header th:insert="fragments/fragments :: navbar"></header>
+<main>
+    <div class="container mt-5">
+        <h2 th:text="#{com.blogapp.article.form.name}" class="mb-3"></h2>
+        <form method="post" th:object="${article}" th:action="@{/public/blog/article/create}">
+            <div th:replace="fragments/fragments :: inputWithErrorHandler('title', ${article.title ne null}, #{com.blogapp.article.form.title}, 'text')"></div>
+            <div th:replace="fragments/fragments :: inputWithErrorHandler('category', ${article.category ne null}, #{com.blogapp.article.form.category}, 'text')"></div>
+            <div class="mb-3">
+                <label class="form-label" th:text="#{com.blogapp.article.form.content}"></label>
+                <textarea class="form-control"
+                          rows="3"
+                          th:field="*{content}"
+                          th:classappend="${#fields.hasErrors('content')} ? 'is-invalid' : (${article.content ne null} ? 'is-valid' : '')">
+                </textarea>
+                <p th:if="${#fields.hasErrors('content')}"
+                   th:errors="*{content}"
+                   class="invalid-feedback">
+                </p>
+            </div>
+            <button type="submit"
+                    class="btn btn-outline-dark"
+                    th:text="#{com.blogapp.article.form.create}"></button>
+        </form>
+        <div th:if="${success}" th:text="#{${success}}"></div>
+    </div>
+</main>
+<footer th:replace="fragments/fragments :: footer"></footer>
+</body>
+</html>

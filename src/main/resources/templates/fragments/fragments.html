@@ -16,7 +16,7 @@
      class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand ms-5"
-           th:href="@{/blog}"
+           th:href="@{/public/blog}"
            th:text="#{com.blogapp.navbar.brand}">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -26,6 +26,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a th:href="@{/public/blog/article/create}" th:text="#{com.blogapp.navbar.new.article}" class="nav-link"></a>
+                </li>
                 <li th:replace="this :: languageSelector"></li>
             </ul>
             <ul class="d-flex navbar-nav mb-2 mb-lg-0 me-5">
@@ -68,6 +71,19 @@
     </ul>
 </li>
 
+<div th:fragment="inputWithErrorHandler(fieldName, isValueValid, labelText, inputType)"
+     class="mb-3">
+    <label class="form-label" th:text="${labelText}"></label>
+    <input th:type="${inputType}"
+           class="form-control"
+           th:field="*{__${fieldName}__}"
+           th:classappend="${#fields.hasErrors(fieldName)} ? 'is-invalid' : (${isValueValid} ? 'is-valid' : '')">
+    <p th:if="${#fields.hasErrors(fieldName)}"
+       th:errors="*{__${fieldName}__}"
+       class="invalid-feedback">
+    </p>
+</div>
+
 <div th:fragment="paginator(pageOfArticles)"
      class="row">
     <div class="col-2"></div>
@@ -80,7 +96,7 @@
                     th:classappend="${pageOfArticles.number eq 0 ? 'disabled':''}">
                     <a class="page-link"
                        aria-label="Previous"
-                       th:href="@{/blog(page=${pageOfArticles.number} - 1, sort=${sort} + ',ignorecase')}">
+                       th:href="@{/public/blog(page=${pageOfArticles.number} - 1, sort=${sort} + ',ignorecase')}">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
@@ -88,20 +104,21 @@
                     th:each="pageNumb: ${#numbers.sequence(0, pageOfArticles.totalPages - 1)}"
                     th:classappend="${pageNumb eq pageOfArticles.number ? 'active':''}">
                     <a class="page-link"
-                       th:href="@{/blog(page=${pageNumb}, sort=${sort} + ',ignorecase')}"
+                       th:href="@{/public/blog(page=${pageNumb}, sort=${sort} + ',ignorecase')}"
                        th:text="${pageNumb} + 1"></a>
                 </li>
                 <li class="page-item"
                     th:classappend="${pageOfArticles.number eq pageOfArticles.totalPages -1 ? 'disabled': ''}">
                     <a class="page-link"
                        aria-label="Next"
-                       th:href="@{/blog(page=${pageOfArticles.number} + 1, sort=${sort} + ',ignorecase')}">
+                       th:href="@{/public/blog(page=${pageOfArticles.number} + 1, sort=${sort} + ',ignorecase')}">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>
             </ul>
         </nav>
     </div>
+</div>
 
 <footer th:fragment="footer"
         class="footer mt-auto py-3 bg-dark">

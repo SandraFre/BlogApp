@@ -26,4 +26,8 @@ public class ArticleService {
         return articleRepository.findById(id).orElseThrow(()->new ArticleNotExistExeption(id));
     }
 
+    public void saveArticle(Article article){
+        articleRepository.save(article);
+    }
+
 }

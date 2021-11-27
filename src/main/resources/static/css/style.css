@@ -14,5 +14,4 @@ body{
     -webkit-line-clamp: 5;
     text-overflow: ellipsis;
     overflow: hidden;
-
 }
