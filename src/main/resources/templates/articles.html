@@ -11,7 +11,8 @@
         <div th:each="article:${pageOfArticles.content}" class="card mb-3" >
             <div class="card-body">
                 <h5 th:text="${article.title}" class="card-title"></h5>
-                <small th:text="${article.category}" class="text-muted" ></small>
+                <small th:text="${article.category}" class="text-muted"></small>
+                <p> <small th:text="${article.date}" class="text-muted" ></small> </p>
                 <p th:text="${article.content}" class="card-text mt-2 text-ellipsis"></p>
                 <div class="card-text d-flex justify-content-between">
                     <small class="text-muted">15 comments</small>

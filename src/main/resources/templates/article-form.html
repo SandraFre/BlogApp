@@ -11,6 +11,10 @@
             <div th:replace="fragments/fragments :: inputWithErrorHandler('title', ${article.title ne null}, #{com.blogapp.article.form.title}, 'text')"></div>
             <div th:replace="fragments/fragments :: inputWithErrorHandler('category', ${article.category ne null}, #{com.blogapp.article.form.category}, 'text')"></div>
             <div class="mb-3">
+                <label class="form-label">Date</label>
+                <input type="date" th:field="*{date}">
+            </div>
+            <div class="mb-3">
                 <label class="form-label" th:text="#{com.blogapp.article.form.content}"></label>
                 <textarea class="form-control"
                           rows="3"

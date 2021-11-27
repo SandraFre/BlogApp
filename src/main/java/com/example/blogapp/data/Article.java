@@ -6,6 +6,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.Date;
 import java.util.UUID;
 
 @Setter
@@ -24,6 +25,9 @@ public class Article {
 
     @NotBlank
     private String category;
+
+    @NotBlank
+    private String date;
 
     @NotBlank
     @Column (columnDefinition = "text")
