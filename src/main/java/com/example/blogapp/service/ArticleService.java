@@ -30,6 +30,10 @@ public class ArticleService {
         articleRepository.save(article);
     }
 
+    public void deleteArticle(UUID id){
+        articleRepository.deleteById(id);
+    }
+
 
 
 

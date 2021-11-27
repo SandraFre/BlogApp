@@ -13,7 +13,7 @@
 
     <div class="container mt-3 d-flex justify-content-end">
         <a th:href="@{/public/blog/article/update/(id=${article.id})}" th:text="#{com.blogapp.button.edit}" class="btn btn-outline-dark mx-3"></a>
-        <a href="#" th:text="#{com.blogapp.button.delete}" class="btn btn-outline-dark mx-3"></a>
+        <a th:href="@{/public/blog/article/{id}/delete(id=${article.id})}" th:text="#{com.blogapp.button.delete}" class="btn btn-outline-dark mx-3"></a>
     </div>
 
     <div class="container mt-5">
