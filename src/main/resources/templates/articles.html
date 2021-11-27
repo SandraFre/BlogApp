@@ -15,9 +15,9 @@
                 <p th:text="${article.content}" class="card-text mt-2 text-ellipsis"></p>
                 <div class="card-text d-flex justify-content-between">
                     <small class="text-muted">15 comments</small>
-                    <a th:text="#{com.blogapp.articles.read.more}"
-                       class="btn btn-outline-dark"
-                       href="#"></a>
+                    <a th:href="@{/blog/article/(id=${article.id})}"
+                       th:text="#{com.blogapp.articles.read.more}"
+                       class="btn btn-outline-dark"></a>
                 </div>
             </div>
         </div>
