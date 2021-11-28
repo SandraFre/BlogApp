@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.sql.DataSource;
@@ -18,22 +19,21 @@ import javax.sql.DataSource;
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true, jsr250Enabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-        private final String h2;
-    private final DataSource dataSource;
+    private final String h2;
+//    private final DataSource dataSource;
     private final UserDetailsService userDetailsService;
 
-        public SecurityConfig(@Value("${spring.h2.console.path}") String h2, DataSource dataSource, UserDetailsService userDetailsService) {
+    public SecurityConfig(@Value("${spring.h2.console.path}") String h2, UserDetailsService userDetailsService) {
         this.h2 = h2 + "/**";
-//    public SecurityConfig(UserDetailsService userDetailsService) {
-        this.dataSource = dataSource;
+
         this.userDetailsService = userDetailsService;
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                    .antMatchers("/h2/**")
-                        .permitAll()
+                .antMatchers("/h2/**")
+                .permitAll()
                 .antMatchers("/public/**", "/")
                 .permitAll()
                 .antMatchers("/private/**")
@@ -42,34 +42,34 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .and()
                 .formLogin()
-//                .loginPage("/login")
-//                .usernameParameter("username")
-//                .passwordParameter("password")
+                .loginPage("/customLogin")
+                .usernameParameter("customUsername")
+                .passwordParameter("customPassword")
                 .defaultSuccessUrl("/public/blog", true)
-                .failureUrl("/login?error")
+                .failureUrl("/customLogin?error")
                 .permitAll()
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"))
                 .permitAll()
-                    .and()
+                .and()
                 .csrf()
-                    .ignoringAntMatchers("/h2/**")
-                    .and()
+                .ignoringAntMatchers("/h2/**")
+                .and()
                 .headers()
-                    .frameOptions()
-                    .sameOrigin();
+                .frameOptions()
+                .sameOrigin();
     }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations())
                 .antMatchers(h2);
-//        web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+
         auth.userDetailsService(userDetailsService)
                 .passwordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder());
     }
