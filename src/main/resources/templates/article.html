@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="fragments/fragments :: head(#{com.blogapp.article.title})"></head>
 
 <body>
@@ -11,9 +12,9 @@
         <p th:text="${article.content}"></p>
     </div>
 
-    <div class="container mt-3 d-flex justify-content-end">
-        <a th:href="@{/public/blog/article/update/(id=${article.id})}" th:text="#{com.blogapp.button.edit}" class="btn btn-outline-dark mx-3"></a>
-        <a th:href="@{/public/blog/article/{id}/delete(id=${article.id})}" th:text="#{com.blogapp.button.delete}" class="btn btn-outline-dark mx-3"></a>
+    <div sec:authorize="hasRole('ADMIN')" class="container mt-3 d-flex justify-content-end">
+        <a th:href="@{/private/blog/article/update/(id=${article.id})}" th:text="#{com.blogapp.button.edit}" class="btn btn-outline-dark mx-3"></a>
+        <a th:href="@{/private/blog/article/{id}/delete(id=${article.id})}" th:text="#{com.blogapp.button.delete}" class="btn btn-outline-dark mx-3"></a>
     </div>
 
     <div class="container mt-5">
