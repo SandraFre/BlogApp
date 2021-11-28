@@ -8,10 +8,10 @@
     <title th:text="#{com.blogapp.user.registration.title}"></title>
 </head>
 <body>
-<div class="container">
+<div class="container mt-5">
     <h2 th:text="#{com.blogapp.user.registration.form.title}"></h2>
     <form method="post"
-          th:action="@{/public/users/create}"
+          th:action="@{/public/users/register}"
           th:object="${userRegistration}">
         <div class="mb-3">
             <label class="form-label" th:text="#{com.blogapp.registration.form.username}"></label>
@@ -30,7 +30,7 @@
                    class="form-control"
                    th:field="*{email}"
                    th:classappend="${#fields.hasErrors('email')} ? 'is-invalid' : (${userRegistration.email ne null} ? 'is-valid' : '')">
-            <p th:if="${#fields.hasErrors('name')}"
+            <p th:if="${#fields.hasErrors('email')}"
                th:errors="*{email}"
                class="invalid-feedback">
             </p>
