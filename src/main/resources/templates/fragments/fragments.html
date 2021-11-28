@@ -42,9 +42,9 @@
                        th:text="#{com.blogapp.navbar.user}">
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#" th:text="#{com.blogapp.navbar.login}"></a></li>
+                        <li><a class="dropdown-item" th:href="@{/login}" th:text="#{com.blogapp.navbar.login}"></a></li>
                         <li><a class="dropdown-item" href="#" th:text="#{com.blogapp.navbar.signup}"></a></li>
-                        <li><a class="dropdown-item" href="#" th:text="#{com.blogapp.navbar.logout}"></a></li>
+                        <li><a class="dropdown-item" th:href="@{/logout}" th:text="#{com.blogapp.navbar.logout}"></a></li>
                     </ul>
                 </li>
             </ul>

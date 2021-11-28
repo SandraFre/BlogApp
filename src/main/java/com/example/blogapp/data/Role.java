@@ -9,10 +9,11 @@ import org.springframework.security.core.GrantedAuthority;
 import javax.persistence.*;
 import java.util.UUID;
 
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Entity
 @Table(name = "roles")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Role implements GrantedAuthority {
 
     @Id
