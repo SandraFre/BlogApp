@@ -30,6 +30,9 @@ public class User implements UserDetails {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Comment> comments;
+
     public User(String username, String email, String password, Set<Role> roles) {
         this.username = username;
         this.email = email;

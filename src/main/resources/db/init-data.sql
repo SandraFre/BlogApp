@@ -26,3 +26,21 @@ INSERT INTO USERS_ROLES (user_id, roles_id) VALUES
     ('bd8968db-ad2a-4dd0-a0ab-7eebcc05427e', '60dbb7bb-99a0-42eb-a837-8be6b697c074'),
     ('bd8968db-ad2a-4dd0-a0ab-7eebcc05427e', '3906c549-44bf-494b-9537-5e1658a029a8');
 
+-- INSERT INTO COMMENTS (id, name, text) VALUES
+--     ('0ea60cac-4b33-4614-9c11-4ba1f6b7b767', '', ''),
+--     ('6f02963c-9ab4-4a00-8b4c-10df3e041cc9', '', ''),
+--     ('acd5019e-8378-4e71-9af1-35d2f7c165b5', '', ''),
+--     ('a39bf962-805d-483d-80ad-bc2255883556', '', ''),
+--     ('f5acb3d4-2690-40b9-a0b1-f2df24007edd', '', ''),
+--     ('0037c2ee-c4b0-41b7-b682-221ab65783e6', '', ''),
+--     ('9d5b7e40-8b32-4f3c-831f-162573307c68', '', ''),
+--     ('f4da2faf-dbe9-456e-84ee-66a63aa769c9', '', ''),
+--     ('7c79c3d7-d962-4185-8e16-978b2f5236e8', '', ''),
+--     ('f3a9ff1c-f610-46bc-8f12-cff557fc85f9', '', ''),
+--     ('b43129f3-1f52-4d90-bd83-4ed79bf4ba6b', '', ''),
+--     ('7fd2e099-cbf6-47b6-8b9a-1926ced9c439', '', ''),
+--     ('dc22c741-38b2-4ff7-ac00-bf205e6a02d7', '', ''),
+--     ('86aaacd5-d127-460b-9c1a-7783ef0ea38d', '', ''),
+--     ('df0611f5-e624-4206-ba49-75e8cdb9e99c', '', '');
+
+
