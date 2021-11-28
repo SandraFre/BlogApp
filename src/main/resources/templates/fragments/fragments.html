@@ -49,7 +49,7 @@
             </ul>
             <ul sec:authorize="isAnonymous()" class="d-flex navbar-nav mb-2 mb-lg-0 me-5">
                 <li><a class="nav-link" th:href="@{/customLogin}" th:text="#{com.blogapp.navbar.login}"></a></li>
-                <li><a class="nav-link" href="#" th:text="#{com.blogapp.navbar.signup}"></a></li>
+                <li><a class="nav-link" th:href="@{/public/users/register}" th:text="#{com.blogapp.navbar.signup}"></a></li>
             </ul>
         </div>
     </div>

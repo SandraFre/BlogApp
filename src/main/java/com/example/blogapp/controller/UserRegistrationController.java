@@ -27,7 +27,7 @@ public class UserRegistrationController {
         this.userService = userService;
     }
 
-    @GetMapping("/create")
+    @GetMapping("/register")
     public String openRegistrationPage(Model model){
         model.addAttribute("userRegistration", new UserRegistration());
         LOG.info("User registration opened");
@@ -35,7 +35,7 @@ public class UserRegistrationController {
         return "user-registration";
     }
 
-    @PostMapping("/create")
+    @PostMapping("/register")
     public String createUser(@Valid UserRegistration userRegistration, BindingResult bindingResult){
         userRegistrationValidator.validate(userRegistration, bindingResult);
         if (bindingResult.hasErrors()){
@@ -45,7 +45,7 @@ public class UserRegistrationController {
 
         userService.createNewUser(userRegistration);
 
-        return "redirect:/public/users/create";
+        return "redirect:/public/users/register";
     }
 
 }
