@@ -73,18 +73,6 @@ VALUES ('0ea60cac-4b33-4614-9c11-4ba1f6b7b767', 'Harris',
        ('df0611f5-e624-4206-ba49-75e8cdb9e99c', 'Harris', 'Aenean non cursus arcu.',
         'abdee4f9-5763-4afc-85ed-98b2fdefb35f', 'c2aa5f20-2441-40f8-8cce-d31dbd17bc84');
 
--- INSERT INTO ARTICLES_COMMENTS (article_id, comment_id) VALUES
---     ('48a95af7-8b83-4a08-8001-0f865db8ea26', '0ea60cac-4b33-4614-9c11-4ba1f6b7b767'),
---     ('48a95af7-8b83-4a08-8001-0f865db8ea26', '6f02963c-9ab4-4a00-8b4c-10df3e041cc9'),
---     ('15a95af7-8b83-4a08-8001-0f865db8ea27', 'acd5019e-8378-4e71-9af1-35d2f7c165b5'),
--- ('ebdee4f9-5763-4afc-85ed-98b2fdefb35f', 'a39bf962-805d-483d-80ad-bc2255883556'),
---     ('abdee4f9-5763-4afc-85ed-98b2fdefb35d', 'f5acb3d4-2690-40b9-a0b1-f2df24007edd'),
---     ('58a95af7-8b83-4a08-8001-0f865db8ea26', '0037c2ee-c4b0-41b7-b682-221ab65783e6'),
---     ('58a95af7-8b83-4a08-8001-0f865db8ea26', '9d5b7e40-8b32-4f3c-831f-162573307c68'),
---     ('45a95af7-8b83-4a08-8001-0f865db8ea27', 'f4da2faf-dbe9-456e-84ee-66a63aa769c9'),
---     ('abdee4f9-5763-4afc-85ed-98b2fdefb35f', '7c79c3d7-d962-4185-8e16-978b2f5236e8'),
---     ('cbdee4f9-5763-4afc-85ed-98b2fdefb35d', 'f3a9ff1c-f610-46bc-8f12-cff557fc85f9'),
---     ('cbdee4f9-5763-4afc-85ed-98b2fdefb35d', 'b43129f3-1f52-4d90-bd83-4ed79bf4ba6b');
 
 
 
