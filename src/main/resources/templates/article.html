@@ -15,49 +15,37 @@
     <div sec:authorize="hasRole('ADMIN')" class="container mt-3 d-flex justify-content-end">
         <a th:href="@{/private/blog/article/update/(id=${article.id})}" th:text="#{com.blogapp.button.edit}"
            class="btn btn-outline-dark mx-3"></a>
-        <a th:href="@{/private/blog/article/{id}/delete(id=${article.id})}" th:text="#{com.blogapp.button.delete}"
+        <a th:href="@{/private/blog/article/{id}/delete/(id=${article.id})}" th:text="#{com.blogapp.button.delete}"
            class="btn btn-outline-dark mx-3"></a>
     </div>
 
     <div class="container mt-5" sec:authorize="hasRole('USER') && !hasRole('ADMIN')">
         <div class="card">
-            <form method="post" class="px-3">
+            <form method="post" th:object="${newComment}" th:action="@{/private/blog/article}" class="px-3">
                 <div class="my-3">
                     <label for="commentNameInput" class="form-label" th:text="#{com.blogapp.comment.form.name}"></label>
-                    <input type="text" class="form-control" id="commentNameInput">
+                    <input type="text" class="form-control" id="commentNameInput"
+                           th:field="*{name}"
+                           th:classappend="${#fields.hasErrors('name')} ? 'is-invalid' : (${newComment.name ne null} ? 'is-valid' : '')">
                 </div>
                 <div class="mb-3">
                     <label for="commentTextInput" class="form-label" th:text="#{com.blogapp.comment.form.text}"></label>
-                    <textarea class="form-control" id="commentTextInput" rows="3"></textarea>
+                    <textarea class="form-control" id="commentTextInput" rows="3"
+                              th:field="*{text}"
+                              th:classappend="${#fields.hasErrors('text')} ? 'is-invalid' : (${newComment.text ne null} ? 'is-valid' : '')"></textarea>
                 </div>
-                <button type="submit" class="btn btn-sm btn-outline-dark mb-3" th:text="#{com.blogapp.comment.form.submit}"></button>
+                <button type="submit" class="btn btn-sm btn-outline-dark mb-3"
+                        th:text="#{com.blogapp.comment.form.submit}"></button>
             </form>
         </div>
     </div>
 
     <div class="container mt-5">
         <h4 class="fst-italic mb-3">Comments</h4>
-        <div class="card mb-3">
+        <div class="card mb-3" th:each="comment : ${allComments.iterator()}">
             <div class="card-body">
-                <h6 class="card-title">John</h6>
-                <p class="card-text mt-2 text-ellipsis">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Vestibulum laoreet nunc non sapien hendrerit, quis mollis dui cursus. Suspendisse commodo.</p>
-                <div class="card-text d-flex justify-content-between">
-                    <div>
-                        <a class="btn btn-sm btn-outline-dark" sec:authorize="hasRole('USER') && !hasRole('ADMIN')" th:text="#{com.blogapp.button.edit}"></a>
-                        <a class="btn btn-sm btn-outline-dark" sec:authorize="hasRole('USER') && !hasRole('ADMIN')" th:text="#{com.blogapp.button.delete}"></a>
-                    </div>
-                    <div>
-                        <a class="btn btn-sm btn-outline-dark" sec:authorize="hasRole('ADMIN')" th:text="#{com.blogapp.button.delete}"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card mb-3">
-            <div class="card-body">
-                <h6 class="card-title">John</h6>
-                <p class="card-text mt-2 text-ellipsis">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Vestibulum laoreet nunc non sapien hendrerit, quis mollis dui cursus. Suspendisse commodo.</p>
+                <h6 class="card-title" th:text="${comment.name}"></h6>
+                <p class="card-text mt-2 text-ellipsis" th:text="${comment.text}"></p>
                 <div class="card-text d-flex justify-content-between">
                     <div>
                         <a class="btn btn-sm btn-outline-dark" sec:authorize="hasRole('USER') && !hasRole('ADMIN')" th:text="#{com.blogapp.button.edit}"></a>

@@ -50,14 +50,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"))
-                .permitAll()
-                .and()
-                .csrf()
-                .ignoringAntMatchers("/h2/**")
-                .and()
-                .headers()
-                .frameOptions()
-                .sameOrigin();
+                .permitAll();
+//                .and()
+//                .csrf()
+//                .ignoringAntMatchers("/h2/**")
+//                .and()
+//                .headers()
+//                .frameOptions()
+//                .sameOrigin();
     }
 
     @Override

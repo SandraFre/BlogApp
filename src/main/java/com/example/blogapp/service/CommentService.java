@@ -5,6 +5,7 @@ import com.example.blogapp.repository.CommentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Service
@@ -15,7 +16,7 @@ public class CommentService {
         this.commentRepository = commentRepository;
     }
 
-    public List<Comment> getComments(){
+    public List<Comment> getAllComments(){
         return commentRepository.findAll();
     }
 
