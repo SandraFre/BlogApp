@@ -74,9 +74,11 @@ public class ArticleController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/private/blog/article/update")
-    public String updateArticle(Article article) {
-        articleService.saveArticle(article);
-
+    public String updateArticle(@Valid Article article, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            articleService.saveArticle(article);
+            return "article-form";
+        }
         return "redirect:/public/blog";
     }
 

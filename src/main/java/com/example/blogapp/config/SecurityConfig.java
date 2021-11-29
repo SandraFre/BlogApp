@@ -20,7 +20,6 @@ import javax.sql.DataSource;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final String h2;
-//    private final DataSource dataSource;
     private final UserDetailsService userDetailsService;
 
     public SecurityConfig(@Value("${spring.h2.console.path}") String h2, UserDetailsService userDetailsService) {
