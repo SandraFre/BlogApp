@@ -14,8 +14,8 @@
                 <small th:text="${article.category}" class="text-muted"></small>
                 <p> <small th:text="${article.date}" class="text-muted" ></small> </p>
                 <p th:text="${article.content}" class="card-text mt-2 text-ellipsis"></p>
-                <div class="card-text d-flex justify-content-between">
-                    <small class="text-muted">15 comments</small>
+                <div class="card-text d-flex justify-content-end">
+<!--                    <small class="text-muted">XX comments</small>-->
                     <a th:href="@{/public/blog/article/(id=${article.id})}"
                        th:text="#{com.blogapp.articles.read.more}"
                        class="btn btn-outline-dark"></a>

@@ -42,7 +42,9 @@
 
     <div class="container mt-5">
         <h4 class="fst-italic mb-3">Comments</h4>
-        <div class="card mb-3" th:each="comment : ${allComments.iterator()}">
+        <div class="card mb-3"
+             th:each="comment : ${allComments.iterator()}"
+             th:if="${comment.article} eq ${article}">
             <div class="card-body">
                 <h6 class="card-title" th:text="${comment.name}"></h6>
                 <p class="card-text mt-2 text-ellipsis" th:text="${comment.text}"></p>

@@ -4,6 +4,7 @@ import com.example.blogapp.data.Article;
 import com.example.blogapp.data.Comment;
 import com.example.blogapp.service.ArticleService;
 import com.example.blogapp.service.CommentService;
+import com.example.blogapp.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -103,6 +104,6 @@ public class ArticleController {
             return "article";
         }
         commentService.saveComment(comment);
-        return "redirect:/public/blog/article";
+        return "redirect:/public/blog";
     }
 }

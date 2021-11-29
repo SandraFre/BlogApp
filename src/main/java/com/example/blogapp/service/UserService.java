@@ -1,8 +1,10 @@
 package com.example.blogapp.service;
 
+import com.example.blogapp.data.Article;
 import com.example.blogapp.data.Role;
 import com.example.blogapp.data.User;
 import com.example.blogapp.data.UserRegistration;
+import com.example.blogapp.exception.ArticleNotExistExeption;
 import com.example.blogapp.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -27,6 +29,10 @@ public class UserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByUsername(username)
                 .orElseThrow(()-> new UsernameNotFoundException(String.format("User %s does not exist", username)));
+    }
+
+    public User getUser(UUID id){
+        return userRepository.findById(id).orElseThrow(()->new RuntimeException(String.valueOf(id)));
     }
 
     public void createNewUser(UserRegistration registration){
